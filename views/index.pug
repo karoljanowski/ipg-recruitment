@@ -1,0 +1,58 @@
+extends defaults/layout.pug
+include defaults/mixins.pug
+block content
+    .container
+        .card
+            .card__preview#card-preview
+                .card__preview--front
+                    .card__preview--front--content
+                        .card__preview--top
+                            .card__preview--chip
+                                img(src="images/chip.png")
+                            .card__preview--brands
+                                img(src="images/visa.png", data-id="visa")
+                                img(src="images/mastercard.png", data-id="mastercard")
+                        .card__preview--number#card-preview-number
+                        .card__preview--details
+                            .card__preview--holder
+                                .card__preview--holder--label Card Holder
+                                .card__preview--holder--name#card-preview-holder-name
+                            .card__preview--expiration
+                                .card__preview--expiration--label Expires
+                                .card__preview--expiration--date
+                                    .card__preview--expiration--month#card-preview-expiration-month
+                                    .card__preview--expiration--separator /
+                                    .card__preview--expiration--year#card-preview-expiration-year
+                .card__preview--back
+                    .card__preview--back--content   
+                        .card__preview--cvv
+                            .card__preview--cvv--number#card-preview-cvv
+            form.card__form
+                div.card__form--number
+                    label(for="card-number") Card Number
+                    input.card__form--number#card-number(type="text")
+                div.card__form--name
+                    label(for="card-name") Card Name
+                    input.card__form--name#card-name(type="text")
+                div.card__form--expiration
+                    label(for="card-month") Expiration Date
+                    select#card-month
+                        option(value="" disabled selected) Month
+                        option(value="01") 01
+                        option(value="02") 02
+                        option(value="03") 03
+                        option(value="04") 04
+                        option(value="05") 05
+                        option(value="06") 06
+                        option(value="07") 07
+                        option(value="08") 08
+                        option(value="09") 09
+                        option(value="10") 10
+                        option(value="11") 11
+                        option(value="12") 12
+                    select#card-year
+                        option(value="" disabled selected) Year
+                div.card__form--cvv
+                    label(for="card-cvv") CVV
+                    input.card__form--input#card-cvv(type="text")
+                button.card__form--button(type="submit") Submit
