@@ -11,12 +11,25 @@ const handleCardPreviewChange = (initialContent, inputElement, previewElement, t
 
     inputElement.addEventListener('input', (e) => {
         let input = e.target.value;
-        if (type === 'number' || type === 'cvv') {
+
+        if (type === 'number') {
             input = input.replace(/\D/g, '').slice(0, maxLength);
+            let formattedInput = '';
+            for (let i = 0; i < input.length; i++) {
+                if (i > 0 && i % 4 === 0) {
+                    formattedInput += ' ';
+                }
+                formattedInput += input[i];
+            }
+            e.target.value = formattedInput;
+            input = input.replace(/\s/g, '');
+        } else if (type === 'cvv') {
+            input = input.replace(/\D/g, '').slice(0, maxLength);
+            e.target.value = input;
         } else if (type === 'name') {
             input = input.replace(/[^a-zA-Z\s]/g, '').slice(0, maxLength);
+            e.target.value = input;
         }
-        e.target.value = input;
 
         if (input.length === 0) {
             for (let i = 0; i < maxLength; i++) {
