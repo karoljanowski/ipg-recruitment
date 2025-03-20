@@ -78,7 +78,7 @@ export default defineConfig({
           .replaceAll(`crossorigin`, "")
           .replaceAll('type="module"', "defer")
           .replace("../js/", "js/")
-          .replace(`<link rel="stylesheet"  href="../css/main.css">`, "");
+          .replace(`<link rel="stylesheet"  href="../css/main.css">`, `<link rel="stylesheet" href="css/main.css">`);
         return transformedHTML;
       },
     },
